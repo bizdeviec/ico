@@ -1,4 +1,4 @@
-const HeroCoin = artifacts.require("./HeroCoin.sol");
+const HeroCoin = artifacts.require("./PKCoin.sol");
 
 module.exports = function (deployer, network, account) {
 
@@ -14,7 +14,7 @@ module.exports = function (deployer, network, account) {
 
         console.log("whitelist account: ", whitelist);
 
-        const heroAddress = deployer.deploy(HeroCoin,
+        const heroAddress = deployer.deploy(PKCoin,
             stateControl,
             whitelist,
             withdraw,
@@ -37,7 +37,7 @@ module.exports = function (deployer, network, account) {
         // 00000000000000000000000014703966b27ea0be3ec0d0fd10ba03549ff58ea6000000000000000000000000f327251dfac3b0235825fdfe3144f2d5bf14d690000000000000000000000000d7090db6ce6c23ee44e4ae532eadab295fd80b70000000000000000000000000230e1a56d05a809ce560d7da8075886483180b12
         console.log("whitelist account: ", whitelist);
 
-        const heroAddress = deployer.deploy(HeroCoin,
+        const heroAddress = deployer.deploy(PKCoin,
             stateControl,
             whitelist,
             withdraw,
@@ -54,7 +54,7 @@ module.exports = function (deployer, network, account) {
         const user1 = account[5];
         const user2 = account[6];
         const user3 = account[7];
-        const heroAddress = deployer.deploy(HeroCoin,
+        const heroAddress = deployer.deploy(PKCoin,
             stateControl,
             whitelist,
             withdraw,
