@@ -1,4 +1,4 @@
-import "./HeroCoin.sol";
+import "./pkcoin.sol";
 
 
 pragma solidity ^0.4.11;
