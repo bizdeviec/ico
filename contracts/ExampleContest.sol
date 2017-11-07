@@ -1,4 +1,4 @@
-import "./pkcoin.sol";
+import "./PKCoin.sol";
 
 
 pragma solidity ^0.4.11;
@@ -9,7 +9,7 @@ contract ExampleContest {
     address public admin;
 
     //TODO: replace this with ENS?
-    HeroCoin public heroCoin;
+    PKCoin public PKCoin;
 
     string public contestData = "Example Contest";
 
@@ -43,11 +43,11 @@ contract ExampleContest {
     // customRewards should not be modifiable during funds withdrawals.
     mapping (address => uint256) public customRewards;
 
-    function ExampleContest(address _heroCoin) {
+    function ExampleContest(address _pkcoin) {
         admin = msg.sender;
-        heroCoin = HeroCoin(_heroCoin);
-        //    heroCoin.balanceOf(msg.sender) > 0;
-        heroCoin.registerContest();
+        pkcoin = pkcoin(_pkcoin);
+        //    pkcoin.balanceOf(msg.sender) > 0;
+        pkcoin.registerContest();
     }
 
 
@@ -72,7 +72,7 @@ contract ExampleContest {
         internal {
             // follows fixed rules for distribution
             // We cannot iterate on participants but we know total amount.
-            // We can remove percentage of total amount and credit herocoin account.
+            // We can remove percentage of total amount and credit pkcoin account.
             // Each other account can get a reduced amount at withdrawal time.
         }*/
 
@@ -96,19 +96,19 @@ contract ExampleContest {
 
     function distributeCoins(address winner)
     internal {
-        uint256 amountWon = heroCoin.balanceOf(this) * 100 / 101;
+        uint256 amountWon = pkcoin.balanceOf(this) * 100 / 101;
         //rounded down
-        heroCoin.transfer(winner, amountWon);
+        pkcoin.transfer(winner, amountWon);
         //if exactly 1, 102, 203, 304, 405, 506 coins were put into this contest, we might have a leftover of 1 coin
         //maybe pay this out to the public
-        uint256 rest = heroCoin.balanceOf(this);
+        uint256 rest = pkcoin.balanceOf(this);
         if (rest > 0) {
-            heroCoin.payRake(rest);
+            pkcoin.payRake(rest);
         }
     }
 
 
-    // admin (and/or HeroCoin admin ? ) can abort contest
+    // admin (and/or pkcoin admin ? ) can abort contest
     function abortContest()
     requireContestAdmin(msg.sender)
     {
