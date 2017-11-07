@@ -1,4 +1,4 @@
-const HeroCoin = artifacts.require("./HeroCoin.sol");
+const HeroCoin = artifacts.require("./PKCoin.sol");
 const ExampleContest = artifacts.require("./ExampleContest.sol");
 
 module.exports = function (deployer, network, account) {
@@ -8,8 +8,8 @@ module.exports = function (deployer, network, account) {
     } else if (network === "development") {
 
 
-        HeroCoin.deployed().then(function (deployed) {
-            console.log("Using deployed Herocoin: ", deployed.address);
+        PKCoin.deployed().then(function (deployed) {
+            console.log("Using deployed pkcoin: ", deployed.address);
             deployer.deploy(ExampleContest, deployed.address).then( function() {
               console.log("Using deployed ExampleContest: " + ExampleContest.address);
             });
