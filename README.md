@@ -25,5 +25,7 @@ Authors
 =======
 
 [Eduardo Mace](https://github.com/edumace)
+
 [Jerome Rousselot](https://github.com/jeromerousselot)
+
 [Andreas Petersson](https://github.com/apetersson)
